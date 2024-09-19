@@ -31,9 +31,11 @@ export const FilterList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
         const response = await fetch(
-          "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json"
+          `${apiUrl}/GetMakesForVehicleType/car?format=json`
         );
+
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -48,7 +50,7 @@ export const FilterList = () => {
   }, [carModel, carYear]);
 
   return (
-    <div className="h-screen bg-slate-500 flex pt-40">
+    <div className="h-screen flex pt-40">
       <form className="max-w-screen-lg mx-auto flex flex-col items-center gap-6 mt-10">
         <div className="w-full max-w-lg">
           <Image
