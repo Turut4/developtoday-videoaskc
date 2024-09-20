@@ -1,6 +1,6 @@
-import { Header } from "@/components/Header";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Header } from '@/components/Header';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 interface CarInfo {
   Make_ID: number;
@@ -28,12 +28,13 @@ const ResultPage = () => {
         );
 
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const result = await response.json();
         setCarData(result.Results);
-      } catch (error: any) {
-        setError(error.message || "Erro ao buscar dados");
+      } catch (error: unknown) {
+        if (error instanceof Error)
+          setError(error.message || 'Erro ao buscar dados');
       } finally {
         setLoading(false);
       }

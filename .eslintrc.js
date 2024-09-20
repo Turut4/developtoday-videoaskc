@@ -1,7 +1,17 @@
 module.exports = {
-  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
-  plugins: ["prettier"],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+  ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
-    "prettier/prettier": "error",
+    'react/react-in-jsx-scope': 'off',
   },
 };

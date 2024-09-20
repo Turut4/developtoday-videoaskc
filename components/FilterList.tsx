@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ApiResponse {
   Results: CarInfo[];
@@ -39,7 +39,7 @@ export const FilterList = () => {
         const result = await response.json();
         setData(result);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
     fetchData();
@@ -65,7 +65,7 @@ export const FilterList = () => {
         <div className="flex flex-col md:flex-row gap-6 mt-4 w-full">
           <select
             className="w-full md:max-w-xs rounded-lg h-8 my-auto"
-            value={carModel || ""}
+            value={carModel || ''}
             onChange={(e) => setCarModel(Number(e.target.value))}
           >
             <option value="" disabled>
@@ -79,7 +79,7 @@ export const FilterList = () => {
           </select>
           <select
             className="w-full md:max-w-xs rounded-lg my-auto h-8"
-            value={carYear || ""}
+            value={carYear || ''}
             onChange={(e) => setCarYear(parseInt(e.target.value))}
           >
             <option value="" disabled>
@@ -92,15 +92,15 @@ export const FilterList = () => {
             ))}
           </select>
           <Link
-            href={carModel && carYear ? `/result/${carModel}/${carYear}` : "#"}
+            href={carModel && carYear ? `/result/${carModel}/${carYear}` : '#'}
             className="relative my-auto"
           >
             <button
               disabled={!carModel || !carYear}
-              className={`w-full md:max-w-xs rounded-lg bg-white h-8 border-slate-400 border-2 px-10 hover:bg-red-400 transition-colors my-auto ${
+              className={`w-full md:max-w-xs rounded-lg bg-white h-8 border-slate-400 border-2 px-10  transition-colors my-auto ${
                 carModel && carYear
-                  ? "hover:bg-green-500 cursor-pointer"
-                  : "cursor-not-allowed"
+                  ? 'hover:bg-green-500 cursor-pointer'
+                  : 'hover:bg-red-400 cursor-not-allowed'
               }`}
             >
               Next
